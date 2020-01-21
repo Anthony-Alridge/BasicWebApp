@@ -41,8 +41,17 @@ public class QueryProcessor {
             return Integer.toString(out);
         } else if (query.toLowerCase().contains("what colour is a banana")) {
             return "yellow";
-        } else if (query.toLowerCase().contains("what is the 7th number in the Fibonacci sequence")) {
-            return "8";
+        } else if (query.toLowerCase().contains("Fibonacci sequence")) {
+            String[] in = query.toLowerCase().split("the ");
+            String[] first = in[1].split("th");
+            int n = Integer.parseInt(first[0]);
+            int fibonacci=0,num=0,num2=1;
+            for(int loop=1;loop<n;loop++) {
+               fibonacci=num+num2;
+               num=num2;
+               num2=fibonacci;
+            }
+            return Integer.toString(fibonacci);
         } else if (query.toLowerCase().contains("which city is the eiffel tower in")) {
             return "paris";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
