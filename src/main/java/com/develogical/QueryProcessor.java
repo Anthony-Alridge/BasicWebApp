@@ -18,6 +18,16 @@ public class QueryProcessor {
             return Integer.toString(out);
         } else if (query.toLowerCase().contains("who played James Bond in the film Dr No")) {
             return "Sean Connery";
+        } else if (query.toLowerCase().contains("which of the following numbers is the largest: x, y")) {
+            String[] in = query.toLowerCase().split(": ");
+            String[] first = in[1].split(", ");
+            int left = Integer.parseInt(first[0]);
+            int right = Integer.parseInt(first[1]);
+            if (left >= right) {
+                return Integer.toString(left);
+            } else {
+                return Integer.toString(right);
+            }
         }
         return "";
     }
