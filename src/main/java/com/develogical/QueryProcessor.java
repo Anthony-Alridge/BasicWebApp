@@ -25,6 +25,22 @@ public class QueryProcessor {
             return Integer.toString(out);
         } else if (query.toLowerCase().contains("who played James Bond in the film Dr No")) {
             return "Sean Connery";
+        } else if (query.toLowerCase().contains("which year was Theresa May first elected as the Prime Minister of Great Britain")) {
+            return "2017";
+        } else if (query.toLowerCase().contains("minus")) {
+            String[] in = query.toLowerCase().split("is ");
+            String[] first = in[1].split(" minus ");
+            int left = Integer.parseInt(first[0]);
+            int right = Integer.parseInt(first[1]);
+            int out = left - right;
+            return Integer.toString(out);
+        } else if (query.toLowerCase().contains("divided by")) {
+            String[] in = query.toLowerCase().split("is ");
+            String[] first = in[1].split(" divided by ");
+            int left = Integer.parseInt(first[0]);
+            int right = Integer.parseInt(first[1]);
+            int out = left / right;
+            return Integer.toString(out);
         }
         return "";
     }
