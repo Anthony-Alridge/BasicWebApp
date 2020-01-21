@@ -55,6 +55,19 @@ public class QueryProcessor {
             } else {
                 return Integer.toString(right);
             }
+        } else if (query.toLowerCase().contains("which of the following numbers is both a square and a cube:")) {
+            String[] in = query.toLowerCase().split(": ");
+            String[] first = in[1].split(", ");
+
+            for (String x_str : first) {
+                int x = Integer.parseInt(x_str);
+                double sq = Math.sqrt(x);
+                double cb = Math.cbrt(x);
+
+                if ((sq - Math.floor(sq)) == 0 && (cb - Math.floor(cb)) == 0) {
+                    return Integer.toString(x);
+                }
+            }
         }
         return "";
     }
