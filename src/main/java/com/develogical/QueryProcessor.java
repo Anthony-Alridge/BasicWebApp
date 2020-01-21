@@ -30,6 +30,7 @@ public class QueryProcessor {
             String[] first = in[1].split(", ");
             int left = Integer.parseInt(first[0]);
             int right = Integer.parseInt(first[1]);
+
             if (left >= right) {
                 return Integer.toString(left);
             } else {
