@@ -16,6 +16,13 @@ public class QueryProcessor {
             int right = Integer.parseInt(first[1]);
             int out = left + right;
             return Integer.toString(out);
+        } else if (query.toLowerCase().contains("multiplied by")) {
+            String[] in = query.toLowerCase().split("is ");
+            String[] first = in[1].split(" multiplied by ");
+            int left = Integer.parseInt(first[0]);
+            int right = Integer.parseInt(first[1]);
+            int out = left * right;
+            return Integer.toString(out);
         }
         return "";
     }
