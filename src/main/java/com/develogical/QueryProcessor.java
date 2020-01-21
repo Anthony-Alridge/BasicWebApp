@@ -45,11 +45,11 @@ public class QueryProcessor {
             String[] in = query.toLowerCase().split("the ");
             String[] first = in[1].split("th");
             int n = Integer.parseInt(first[0]);
-            int fibonacci=0,num=0,num2=1;
-            for(int loop=1;loop<n;loop++) {
-               fibonacci=num+num2;
-               num=num2;
-               num2=fibonacci;
+            int fibonacci = 0, num = 0, num2 = 1;
+            for (int loop = 1; loop < n; loop++) {
+                fibonacci = num + num2;
+                num = num2;
+                num2 = fibonacci;
             }
             return Integer.toString(fibonacci);
         } else if (query.toLowerCase().contains("which city is the eiffel tower in")) {
@@ -76,6 +76,23 @@ public class QueryProcessor {
                 if ((sq - Math.floor(sq)) == 0 && (cb - Math.floor(cb)) == 0) {
                     return Integer.toString(x);
                 }
+            }
+        } else if (query.toLowerCase().contains("which of the following numbers are primes:")) {
+            String[] in = query.toLowerCase().split(": ");
+            String[] first = in[1].split(", ");
+
+            for (String x_str : first) {
+                int x = Integer.parseInt(x_str);
+                boolean flag = false;
+                for (int i = 2; i <= x / 2; ++i) {
+                    // condition for nonprime xber
+                    if (x % i == 0) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag)
+                    return Integer.toString(x);
             }
         }
         return "";
