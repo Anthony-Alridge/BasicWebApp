@@ -9,6 +9,13 @@ public class QueryProcessor {
                     + "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.toLowerCase().contains("what is your team name")) {
             return "Team Jordam";
+        } else if (query.toLowerCase().contains("plus")) {
+            String[] in = query.toLowerCase.split("is ");
+            String[] first = in[1].split(" plus ");
+            int left = Integer.parseInt(first[0]);
+            int right = Integer.parseInt(first[1]);
+            int out = left + right;
+            return Integer.toString(out);
         }
         return "";
     }
