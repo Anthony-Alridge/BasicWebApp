@@ -41,7 +41,13 @@ public class QueryProcessor {
             int right = Integer.parseInt(first[1]);
             int out = left / right;
             return Integer.toString(out);
-        }
+        } else if (query.toLowerCase().contains("what colour is a banana")) {
+            return "yellow";
+        } else if (query.toLowerCase().contains("what is the 7th number in the Fibonacci sequence")) {
+            return "8";
+        } else if (query.toLowerCase().contains("which city is the eiffel tower in")) {
+            return "paris";
+        } 
         return "";
     }
 }
