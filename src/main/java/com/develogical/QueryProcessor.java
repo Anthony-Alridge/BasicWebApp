@@ -10,7 +10,7 @@ public class QueryProcessor {
         } else if (query.toLowerCase().contains("what is your team name")) {
             return "Team Jordamn";
         } else if (query.toLowerCase().contains("plus")) {
-            String[] in = query.toLowerCase.split("is ");
+            String[] in = query.toLowerCase().split("is ");
             String[] first = in[1].split(" plus ");
             int left = Integer.parseInt(first[0]);
             int right = Integer.parseInt(first[1]);
