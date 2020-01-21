@@ -1,4 +1,7 @@
 package com.develogical;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 
 public class QueryProcessor {
 
@@ -9,13 +12,19 @@ public class QueryProcessor {
                     + "writer in the English language and the world's pre-eminent dramatist.";
         } else if (query.toLowerCase().contains("what is your team name")) {
             return "Team Jordamn";
-        } else if (query.toLowerCase().contains("plus")) {
-            String[] in = query.toLowerCase().split("is ");
-            String[] first = in[1].split(" plus ");
-            int left = Integer.parseInt(first[0]);
-            int right = Integer.parseInt(first[1]);
-            int out = left + right;
-            return Integer.toString(out);
+        } else if (query.toLowerCase().contains("plus")
+        || query.toLowerCase().contains("multiplied by")
+        || query.toLowerCase().contains("minus")) {
+            try {
+                String input = query.toLowerCase().replace("plus","+").replace("minus","-").replace("multiplied by","*");
+                String[] in = input.split("is ");
+                ScriptEngineManager mgr = new ScriptEngineManager();
+                ScriptEngine engine = mgr.getEngineByName("JavaScript");
+                Integer i = (Integer)engine.eval(in[1]);
+                return Integer.toString(i);
+            } catch (Exception e) {
+                return "";
+            }
         } else if (query.toLowerCase().contains("multiplied by")) {
             String[] in = query.toLowerCase().split("is ");
             String[] first = in[1].split(" multiplied by ");
